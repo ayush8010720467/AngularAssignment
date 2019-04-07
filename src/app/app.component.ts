@@ -21,11 +21,10 @@ export class AppComponent {
       this.QuestionsDIFJ = response['response']['data'];
       console.log(this.QuestionsDIFJ.length);
       this.showGif = false;
-      this.submit();
     });
   }
   submit() {
-    console.log('the function is called');
+    console.log('the function submit is called');
     console.log(this.QuestionsDIFJ);
   }
   isCheckbox(data: Data) {
@@ -36,6 +35,12 @@ export class AppComponent {
   }
   isDate(data: Data) {
     if (data.type === 'date') {
+      return true;
+    }
+    return false;
+  }
+  isButton(data: Data) {
+    if (data.type === 'button') {
       return true;
     }
     return false;

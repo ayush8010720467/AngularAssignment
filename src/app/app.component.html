@@ -11,6 +11,9 @@
           {{question.label}}
         <input type="date" placeholder="enter date">
       </div>
+      <div *ngIf='isButton(question)'>
+          <button type="button" (click)='submit()'> {{question.label}}</button>
+      </div>
     </form>
   </div>
 </div>
