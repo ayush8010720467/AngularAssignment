@@ -28,6 +28,18 @@ export class AppComponent {
     console.log('the function is called');
     console.log(this.QuestionsDIFJ);
   }
+  isCheckbox(data: Data) {
+    if (data.type === 'checkbox') {
+      return true;
+    }
+    return false;
+  }
+  isDate(data: Data) {
+    if (data.type === 'date') {
+      return true;
+    }
+    return false;
+  }
 }
 interface Validation {
   name: string;
