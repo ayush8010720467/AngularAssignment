@@ -49,7 +49,7 @@ export class AppComponent {
     return false;
   }
   search(showif: ShowIf): number {
-    for (let i: 0; i < this.QuestionsDIFJ.length; i++) {
+    for (let i = 0; i < this.QuestionsDIFJ.length; i++) {
       if (this.QuestionsDIFJ[i].name === showif.field) {
         return i;
       }
@@ -77,6 +77,12 @@ export class AppComponent {
   }
   showData() {
     console.log(this.QuestionsDIFJ[0].value);
+  }
+  showCheckbox(question: Data): boolean {
+    return this.isCheckbox(question) && this.toBeShown(question);
+  }
+  showDate(question: Data): boolean {
+    return this.isDate(question) && this.toBeShown(question);
   }
 }
 interface Validation {

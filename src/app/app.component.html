@@ -4,10 +4,10 @@
 <div *ngIf='!showGif' style="width: 100%;text-align: center">
   <div *ngFor='let question of QuestionsDIFJ;let i=index'>
     <form>
-      <div style="margin-left: -65px;" *ngIf='isCheckbox(question)'>
+      <div style="margin-left: -65px;" *ngIf='showCheckbox(question)'>
         <input type="checkbox">{{question.label}}
       </div>
-      <div *ngIf='isDate(question)'>
+      <div *ngIf='showDate(question)'>
           {{question.label}}
         <input type="date" placeholder="enter date" [(ngModel)]="question.value" (focusout)='showData()' name="date" >
       </div>
