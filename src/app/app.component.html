@@ -5,11 +5,11 @@
   <div *ngFor='let question of QuestionsDIFJ;let i=index'>
     <form>
       <div style="margin-left: -65px;" *ngIf='showCheckbox(question)'>
-        <input type="checkbox">{{question.label}}
+        <input type="checkbox" [(ngModel)]="question.value" name="checkbox">{{question.label}}
       </div>
       <div *ngIf='showDate(question)'>
           {{question.label}}
-        <input type="date" placeholder="enter date" [(ngModel)]="question.value" (focusout)='showData()' name="date" >
+        <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()' name="date" >
       </div>
       <div *ngIf='isButton(question)'>
           <button type="button" (click)='submit()'> {{question.label}}</button>
