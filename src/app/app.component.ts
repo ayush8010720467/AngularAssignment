@@ -11,6 +11,7 @@ export class AppComponent {
   showGif = true;
   private QuestionsDIFJ: Data[];
   private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
+  //  private apiUrl = 'https://api.myjson.com/bins/140ui4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
@@ -21,7 +22,7 @@ export class AppComponent {
       this.QuestionsDIFJ = response['response']['data'];
       console.log(typeof this.QuestionsDIFJ[1].value);
       this.showGif = false;
-      // for now we are hardcoding the correction in API
+      // for now we are hardcoding the correction in API as the perticular API has the error
       this.QuestionsDIFJ[1].showIf.field = 'dob';
       this.QuestionsDIFJ[1].showIf.value = '2001-01-01';
     });
@@ -49,7 +50,7 @@ export class AppComponent {
     return false;
   }
   search(showif: ShowIf): number {
-    for (let i: 0; i < this.QuestionsDIFJ.length; i++) {
+    for (let i = 0; i < this.QuestionsDIFJ.length; i++) {
       if (this.QuestionsDIFJ[i].name === showif.field) {
         return i;
       }
@@ -77,6 +78,12 @@ export class AppComponent {
   }
   showData() {
     console.log(this.QuestionsDIFJ[0].value);
+  }
+  showCheckbox(question: Data): boolean {
+    return this.isCheckbox(question) && this.toBeShown(question);
+  }
+  showDate(question: Data): boolean {
+    return this.isDate(question) && this.toBeShown(question);
   }
 }
 interface Validation {
