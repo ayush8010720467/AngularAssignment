@@ -46,7 +46,7 @@ export class AppComponent {
 
       }
 
-    );;
+    );
   }
   isCheckbox(data: Data) {
     if (data.type === 'checkbox') {
