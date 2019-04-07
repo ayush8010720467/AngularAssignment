@@ -21,6 +21,9 @@ export class AppComponent {
       this.QuestionsDIFJ = response['response']['data'];
       console.log(typeof this.QuestionsDIFJ[1].value);
       this.showGif = false;
+      // for now we are hardcoding the correction in API
+      this.QuestionsDIFJ[1].showIf.field = 'dob';
+      this.QuestionsDIFJ[1].showIf.value = '2001-01-01';
     });
   }
   submit() {
