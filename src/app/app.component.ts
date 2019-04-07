@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   showGif = true;
   private QuestionsDIFJ: Data[];
-  private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
-  //  private apiUrl = 'https://api.myjson.com/bins/140ui4';
+   private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
+  // private apiUrl = 'https://api.myjson.com/bins/140ui4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
@@ -28,8 +28,14 @@ export class AppComponent {
     });
   }
   submit() {
+    // check if all the validations are fullfiled first then prepare for posting the response of the form
+    let dataModel: any = {};
+    // now place the key , value pair in it
+    for (let i = 0; i < this.QuestionsDIFJ.length - 1; i++) {
+      dataModel[this.QuestionsDIFJ[i].name] = this.QuestionsDIFJ[i].value;
+    }
     console.log('the function submit is called');
-    console.log(this.QuestionsDIFJ);
+    console.log(dataModel);
   }
   isCheckbox(data: Data) {
     if (data.type === 'checkbox') {
