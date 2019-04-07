@@ -19,7 +19,7 @@ export class AppComponent {
     this.http.get(this.apiUrl).subscribe((response) => {
       // console.log(response['response']['data'][0]);
       this.QuestionsDIFJ = response['response']['data'];
-      console.log(this.QuestionsDIFJ.length);
+      console.log(typeof this.QuestionsDIFJ[1].value);
       this.showGif = false;
     });
   }
@@ -69,4 +69,5 @@ interface Data {
   showIf: ShowIf;
   action: string;
   api: Api;
+  value: any;
 }
