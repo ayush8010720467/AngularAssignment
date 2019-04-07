@@ -1,1 +1,20 @@
+<div *ngIf='showGif' style="width: 100%;text-align: center">
+  <img src="../assets/loader.gif" height="100px" width="100px">
+</div>
+<div *ngIf='!showGif' style="width: 100%;text-align: center">
+  <div *ngFor='let question of QuestionsDIFJ;let i=index'>
+    <form>
+      <div style="margin-left: -65px;" *ngIf='isCheckbox(question)'>
+        <input type="checkbox">{{question.label}}
+      </div>
+      <div *ngIf='isDate(question)'>
+          {{question.label}}
+        <input type="date" placeholder="enter date" [(ngModel)]="question.value" (focusout)='showData()' name="date" >
+      </div>
+      <div *ngIf='isButton(question)'>
+          <button type="button" (click)='submit()'> {{question.label}}</button>
+      </div>
+    </form>
+  </div>
+</div>
 <router-outlet></router-outlet>
