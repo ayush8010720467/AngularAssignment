@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   showGif = true;
   private QuestionsDIFJ: Data[];
-   private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
+  private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
   // private apiUrl = 'https://api.myjson.com/bins/140ui4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
@@ -36,6 +36,17 @@ export class AppComponent {
     }
     console.log('the function submit is called');
     console.log(dataModel);
+    this.http.post(this.QuestionsDIFJ[this.QuestionsDIFJ.length - 1].api.uri, dataModel).subscribe(
+      data => {
+        console.log('POST Request is successful ', data);
+      },
+      error => {
+
+        console.log('Error', error);
+
+      }
+
+    );;
   }
   isCheckbox(data: Data) {
     if (data.type === 'checkbox') {
