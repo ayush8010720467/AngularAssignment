@@ -9,7 +9,7 @@
       </div>
       <div *ngIf='isDate(question)'>
           {{question.label}}
-        <input type="date" placeholder="enter date">
+        <input type="date" placeholder="enter date" [(ngModel)]="question.value" (focusout)='showData()' name="date" >
       </div>
       <div *ngIf='isButton(question)'>
           <button type="button" (click)='submit()'> {{question.label}}</button>

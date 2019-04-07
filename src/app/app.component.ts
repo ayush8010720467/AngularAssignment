@@ -45,6 +45,36 @@ export class AppComponent {
     }
     return false;
   }
+  search(showif: ShowIf): number {
+    for (let i: 0; i < this.QuestionsDIFJ.length; i++) {
+      if (this.QuestionsDIFJ[i].name === showif.field) {
+        return i;
+      }
+    }
+    // if the field is not found then return -1
+    return -1;
+  }
+  toBeShown(question: Data): boolean {
+    if (question.showIf == null) {
+      return true;
+    } else {
+      // use the search function to get the index of the perticular field
+      let index;
+      index = this.search(question.showIf);
+      if (index === -1) {
+        // not found
+        return true;
+      } else {
+        if (this.QuestionsDIFJ[index].value === question.showIf.value) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  showData() {
+    console.log(this.QuestionsDIFJ[0].value);
+  }
 }
 interface Validation {
   name: string;
