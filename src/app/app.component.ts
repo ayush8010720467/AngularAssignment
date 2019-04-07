@@ -19,7 +19,7 @@ export class AppComponent {
     this.http.get(this.apiUrl).subscribe((response) => {
       // console.log(response['response']['data'][0]);
       this.QuestionsDIFJ = response['response']['data'];
-      console.log(this.QuestionsDIFJ);
+      console.log(this.QuestionsDIFJ.length);
       this.showGif = false;
       this.submit();
     });
