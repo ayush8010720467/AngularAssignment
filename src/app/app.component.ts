@@ -8,9 +8,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  showGif = true;
   private QuestionsDIFJ: Data[];
   private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
   constructor(private route: Router, private http: HttpClient) {
+    this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
   }
   hitApiForQuestionsForDIFJ() {
@@ -18,6 +20,7 @@ export class AppComponent {
       // console.log(response['response']['data'][0]);
       this.QuestionsDIFJ = response['response']['data'];
       console.log(this.QuestionsDIFJ);
+      this.showGif = false;
       this.submit();
     });
   }
