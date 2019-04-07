@@ -1,17 +1,14 @@
-<div  *ngIf='showGif'>
+<div  *ngIf='showGif' style="width: 100%;text-align: center">
       <img src="../assets/loader.gif" height="100px" width="100px"  >
 </div>
-<div *ngIf='!showGif'>
-    <div class="ms-CheckBox">
-        <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
-        <label role="checkbox" class="ms-CheckBox-field" tabindex="0" aria-checked="false" name="checkboxa">
-          <span class="ms-Label">Checkbox</span>
-        </label>
+<div *ngIf='!showGif' style="width: 100%;text-align: center">
+<form>
+    <div style="margin-left: -65px;">
+      <input type="checkbox">CheckBox
     </div>
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <div>
+      <input type="date" placeholder="enter date">
+    </div>
+</form>
 </div>
 <router-outlet></router-outlet>
