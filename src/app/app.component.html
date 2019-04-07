@@ -1,5 +1,12 @@
 <div  *ngIf='showGif'>
       <img src="../assets/loader.gif" height="100px" width="100px"  >
 </div>
-
+<div *ngIf='!showGif'>
+    <div class="ms-CheckBox">
+        <input tabindex="-1" type="checkbox" class="ms-CheckBox-input">
+        <label role="checkbox" class="ms-CheckBox-field" tabindex="0" aria-checked="false" name="checkboxa">
+          <span class="ms-Label">Checkbox</span>
+        </label>
+      </div>
+</div>
 <router-outlet></router-outlet>
