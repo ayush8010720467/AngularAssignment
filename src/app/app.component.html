@@ -1,20 +1,25 @@
-<div *ngIf='showGif' style="width: 100%;text-align: center">
-  <img src="../assets/loader.gif" height="100px" width="100px">
-</div>
-<div *ngIf='!showGif' style="width: 100%;text-align: center">
-  <div *ngFor='let question of QuestionsDIFJ;let i=index'>
-    <form>
-      <div style="margin-left: -65px;" *ngIf='showCheckbox(question)'>
-        <input type="checkbox" [(ngModel)]="question.value" name="checkbox">{{question.label}}
-      </div>
-      <div *ngIf='showDate(question)'>
-          {{question.label}}
-        <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()' name="date" >
-      </div>
-      <div *ngIf='isButton(question)'>
-          <button type="button" (click)='submit()'> {{question.label}}</button>
-      </div>
-    </form>
+<mat-card style="width: 50%; text-align: center;">
+  <div *ngIf='showGif' style="width: 100%;text-align: center">
+    <img src="../assets/loader.gif" height="100px" width="100px">
   </div>
-</div>
+  <div *ngIf='!showGif' style="width: 100%;text-align: center">
+    <div *ngFor='let question of QuestionsDIFJ;let i=index'>
+      <form>
+        <div style="margin-left: -65px;" *ngIf='showCheckbox(question)'>
+          <mat-checkbox [(ngModel)]="question.value" name="checkbox">{{question.label}}</mat-checkbox>
+        </div>
+        <div *ngIf='showDate(question)'>
+          {{question.label}}
+          <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()'
+            name="date">
+        </div>
+       <mat-card-actions *ngIf='isButton(question)'>
+          <button type="button" (click)='submit()' mat-raised-button color="primary"> {{question.label}}</button>
+       </mat-card-actions>
+      </form>
+    </div>
+
+  </div>
+
+</mat-card>
 <router-outlet></router-outlet>
