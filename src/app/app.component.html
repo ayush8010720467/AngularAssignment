@@ -24,13 +24,6 @@ height: 100%;">
             <mat-datepicker-toggle matSuffix [for]="picker" (focusout)='convert(question)'></mat-datepicker-toggle>
             <mat-datepicker touchUi  #picker  (focusout)='convert(question)'></mat-datepicker>
           </mat-form-field>
-          <!-- <mat-form-field class="example-full-width">
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="question.value"
-              (focusout)='convert(question)'>
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker1></mat-datepicker>
-            </mat-form-field> -->
-            <!-- <p style="color: red">error messakjsdkl</p> -->
         </div>
 
        <mat-card-actions *ngIf='isButton(question)'>
