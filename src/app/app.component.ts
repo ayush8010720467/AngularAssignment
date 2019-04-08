@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,12 +7,16 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   showGif = true;
   private QuestionsDIFJ: Data[];
   // private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
   private apiUrl = 'https://api.myjson.com/bins/140ui4';
   constructor(private route: Router, private http: HttpClient) {
+    this.showGif = true;
+    this.hitApiForQuestionsForDIFJ();
+  }
+  ngOnInit() {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
   }
@@ -40,8 +44,9 @@ export class AppComponent {
     this.http.post(this.QuestionsDIFJ[this.QuestionsDIFJ.length - 1].api.uri, dataModel).subscribe(
       data => {
         console.log('POST Request is successful ', data);
-        this.showGif = true;
+        this.showGif = true ;
         alert('Answers have been submited');
+        this.ngOnInit();
       },
       error => {
 
@@ -116,7 +121,7 @@ export class AppComponent {
       return true;
     } else {
       if (question.validations[0].name === 'required') {
-        if (question.value != null) {
+        if (question.value != null && question.value !== 'undefined' && question.value !== 'NaN-aN-aN') {
           return true;
         } else {
           return false;

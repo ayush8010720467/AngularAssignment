@@ -1,6 +1,7 @@
-<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
-    <mat-card style="width: 50%; justify-content: center">
-        <mat-card-header style="width: 100%">
+<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="display: flex; justify-content: center;align-items: center;
+height: 100%;">
+    <mat-card style="width: 50%;">
+        <mat-card-header style="width: 100%;display: flex;justify-content: center;">
             <mat-card-title style="text-align: center;">Dynamic Input Form Json</mat-card-title>
         </mat-card-header>
       <div *ngIf='showGif' style="width: 100%;text-align: center;">
@@ -8,22 +9,34 @@
   </div>
       <div *ngIf='!showGif' style="width: 100%;text-align: center;">
     <div *ngFor='let question of QuestionsDIFJ;let i=index'>
-      <form>
+      <div>
+
         <div style="margin-left: -65px;" *ngIf='showCheckbox(question)'>
-              <mat-checkbox [(ngModel)]="question.value" name="checkbox" color='primary'>{{question.label}}</mat-checkbox>
+           <mat-checkbox [(ngModel)]="question.value" name="checkbox" color='primary'>{{question.label}}</mat-checkbox>
         </div>
         <div *ngIf='showDate(question)'>
           {{question.label}}
           <!-- <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()'
             name="date"> -->
-            <input matInput [matDatepicker]="picker" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}"(focusout)='convert(question)'>
+            <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="enter date" [(ngModel)]="question.value"
+             >
             <mat-datepicker-toggle matSuffix [for]="picker" (focusout)='convert(question)'></mat-datepicker-toggle>
-            <mat-datepicker #picker (focusout)='convert(question)'></mat-datepicker>
+            <mat-datepicker touchUi  #picker  (focusout)='convert(question)'></mat-datepicker>
+          </mat-form-field>
+          <!-- <mat-form-field class="example-full-width">
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="question.value"
+              (focusout)='convert(question)'>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field> -->
+            <!-- <p style="color: red">error messakjsdkl</p> -->
         </div>
+
        <mat-card-actions *ngIf='isButton(question)'>
           <button type="button" (click)='submit()' mat-raised-button color="primary" [disabled]="validateForSubmitButton()"> {{question.label}}</button>
        </mat-card-actions>
-      </form>
+      </div>
     </div>
   </div>
 </mat-card>
