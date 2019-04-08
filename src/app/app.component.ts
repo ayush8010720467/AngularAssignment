@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     this.http.post(this.QuestionsDIFJ[this.QuestionsDIFJ.length - 1].api.uri, dataModel).subscribe(
       data => {
         console.log('POST Request is successful ', data);
-        this.showGif = true ;
+        this.showGif = true;
         alert('Answers have been submited');
         this.ngOnInit();
       },
@@ -132,10 +132,13 @@ export class AppComponent implements OnInit {
   validateForSubmitButton(): boolean {
     for (let i = 0; i < this.QuestionsDIFJ.length - 1; i++) {
       if (this.checkDatepickerValidation(this.QuestionsDIFJ[i]) === false) {
-          return true;
+        return true;
       }
     }
     return false;
+  }
+  datepickerHasError(question: Data): boolean {
+    return !this.checkDatepickerValidation(question);
   }
 }
 interface Validation {
