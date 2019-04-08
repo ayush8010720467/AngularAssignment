@@ -93,8 +93,14 @@ export class AppComponent {
     }
     return false;
   }
+  convert(question) {
+    let date = new Date(question.value),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+      question.value = [date.getFullYear(), mnth, day].join("-");
+  }
   showData() {
-    console.log(this.QuestionsDIFJ[0].value);
+    console.log(typeof this.QuestionsDIFJ[0].value);
   }
   showCheckbox(question: Data): boolean {
     return this.isCheckbox(question) && this.toBeShown(question);
