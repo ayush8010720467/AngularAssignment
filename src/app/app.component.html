@@ -14,14 +14,14 @@
         </div>
         <div *ngIf='showDate(question)'>
           {{question.label}}
-          <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()'
-            name="date">
+          <!-- <input type="date" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}" (focusout)='showData()'
+            name="date"> -->
             <input matInput [matDatepicker]="picker" placeholder="enter date" [(ngModel)]="question.value" [ngModelOptions]="{standalone: true}"(focusout)='convert(question)'>
             <mat-datepicker-toggle matSuffix [for]="picker" (focusout)='convert(question)'></mat-datepicker-toggle>
             <mat-datepicker #picker (focusout)='convert(question)'></mat-datepicker>
         </div>
        <mat-card-actions *ngIf='isButton(question)'>
-          <button type="button" (click)='submit()' mat-raised-button color="primary"> {{question.label}}</button>
+          <button type="button" (click)='submit()' mat-raised-button color="primary" [disabled]="validateForSubmitButton()"> {{question.label}}</button>
        </mat-card-actions>
       </form>
     </div>

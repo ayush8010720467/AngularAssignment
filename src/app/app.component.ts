@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   showGif = true;
   private QuestionsDIFJ: Data[];
-  private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
-  // private apiUrl = 'https://api.myjson.com/bins/140ui4';
+  // private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
+  private apiUrl = 'https://api.myjson.com/bins/140ui4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
@@ -23,12 +23,13 @@ export class AppComponent {
       console.log(typeof this.QuestionsDIFJ[1].value);
       this.showGif = false;
       // for now we are hardcoding the correction in API as the perticular API has the error
-      this.QuestionsDIFJ[1].showIf.field = 'dob';
-      this.QuestionsDIFJ[1].showIf.value = '2001-01-01';
+      // this.QuestionsDIFJ[1].showIf.field = 'dob';
+      // this.QuestionsDIFJ[1].showIf.value = '2001-01-01';
     });
   }
   submit() {
     // check if all the validations are fullfiled first then prepare for posting the response of the form
+    this.showGif = true;
     let dataModel: any = {};
     // now place the key , value pair in it
     for (let i = 0; i < this.QuestionsDIFJ.length - 1; i++) {
@@ -39,6 +40,8 @@ export class AppComponent {
     this.http.post(this.QuestionsDIFJ[this.QuestionsDIFJ.length - 1].api.uri, dataModel).subscribe(
       data => {
         console.log('POST Request is successful ', data);
+        this.showGif = true;
+        alert('Answers have been submited');
       },
       error => {
 
@@ -97,7 +100,7 @@ export class AppComponent {
     let date = new Date(question.value),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
       day = ("0" + date.getDate()).slice(-2);
-      question.value = [date.getFullYear(), mnth, day].join("-");
+    question.value = [date.getFullYear(), mnth, day].join("-");
   }
   showData() {
     console.log(typeof this.QuestionsDIFJ[0].value);
@@ -108,15 +111,36 @@ export class AppComponent {
   showDate(question: Data): boolean {
     return this.isDate(question) && this.toBeShown(question);
   }
+  checkDatepickerValidation(question: Data): boolean {
+    if (question.validations == null) {
+      return true;
+    } else {
+      if (question.validations[0].name === 'required') {
+        if (question.value != null) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+  validateForSubmitButton(): boolean {
+    for (let i = 0; i < this.QuestionsDIFJ.length - 1; i++) {
+      if (this.checkDatepickerValidation(this.QuestionsDIFJ[i]) === false) {
+          return true;
+      }
+    }
+    return false;
+  }
 }
 interface Validation {
   name: string;
   message: string;
-  value: string;
+  value: any;
 }
 interface ShowIf {
   field: string;
-  value: string;
+  value: any;
 }
 interface Api {
   uri: string;
