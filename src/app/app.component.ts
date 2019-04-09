@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
   }
   validateForSubmitButton(): boolean {
     for (let i = 0; i < this.QuestionsDIFJ.length - 1; i++) {
-      if (this.checkDatepickerValidation(this.QuestionsDIFJ[i]) === false) {
+      if (this.checkDatepickerValidation(this.QuestionsDIFJ[i]) === false ) {
         return true;
       }
     }

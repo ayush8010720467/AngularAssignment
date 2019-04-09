@@ -17,10 +17,10 @@ height: 100%;">
         <div *ngIf='showDate(question)'>
           {{question.label}}
             <mat-form-field class="example-full-width" style="margin-left: 50px;">
-            <input matInput [matDatepicker]="picker" [(ngModel)]="question.value"
+            <input matInput [matDatepicker]="picker" [(ngModel)]="question.value" (dateChange)="convert(question)" (dateInput)="convert(question)"
              >
-            <mat-datepicker-toggle matSuffix [for]="picker" (focusout)='convert(question)'></mat-datepicker-toggle>
-            <mat-datepicker touchUi  #picker  (focusout)='convert(question)'></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="picker"  (dateChange)="convert(question)" (dateInput)="convert(question)"></mat-datepicker-toggle>
+            <mat-datepicker touchUi  #picker   (dateChange)="convert(question)" (dateInput)="convert(question)"></mat-datepicker>
           </mat-form-field>
           <div *ngIf='datepickerHasError(question)'>
               <p style="margin-top: -20px;color: red;margin-left: -.5em;font-size: 12px" >
