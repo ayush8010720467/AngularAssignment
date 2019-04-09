@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   showGif = true;
   private QuestionsDIFJ: Data[];
   // private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
-  private apiUrl = 'https://api.myjson.com/bins/140ui4';
+  private apiUrl = 'https://api.myjson.com/bins/ghzp4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
