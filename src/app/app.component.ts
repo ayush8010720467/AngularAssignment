@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   showGif = true;
   private QuestionsDIFJ: Data[];
-  // private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
-  private apiUrl = 'https://api.myjson.com/bins/ghzp4';
+   private apiUrl = 'https://ca.platform.simplifii.xyz/api/v1/static/assignment5';
+  // private apiUrl = 'https://api.myjson.com/bins/ghzp4';
   constructor(private route: Router, private http: HttpClient) {
     this.showGif = true;
     this.hitApiForQuestionsForDIFJ();
@@ -23,8 +23,9 @@ export class AppComponent implements OnInit {
   hitApiForQuestionsForDIFJ() {
     this.http.get(this.apiUrl).subscribe((response) => {
       // console.log(response['response']['data'][0]);
-      this.QuestionsDIFJ = response['response']['data'];
-      console.log(typeof this.QuestionsDIFJ[1].value);
+      this.QuestionsDIFJ = response['response']['data']['response']['data'];
+      console.log("asdjfaskdjf");
+      console.log(this.QuestionsDIFJ);
       this.showGif = false;
       // for now we are hardcoding the correction in API as the perticular API has the error
       // this.QuestionsDIFJ[1].showIf.field = 'dob';
