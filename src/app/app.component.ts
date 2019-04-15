@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   hitApiForQuestionsForDIFJ() {
     this.http.get(this.apiUrl).subscribe((response) => {
       // console.log(response['response']['data'][0]);
-      this.QuestionsDIFJ = response['response']['data']['response']['data'];
+      this.QuestionsDIFJ = response['response']['data'];
       console.log("asdjfaskdjf");
       console.log(this.QuestionsDIFJ);
       this.showGif = false;
