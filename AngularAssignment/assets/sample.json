@@ -1,0 +1,38 @@
+{
+  "response": {
+    "data": [
+      {
+        "type": "date",
+        "label": "DOB",
+        "name": "dob",
+        "validations": [
+          {
+            "name": "required",
+            "message": "Date of Birth Required"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "label": "Please Accept Terms",
+        "name": "term",
+        "value": true,
+        "showIf": {
+          "field": "country",
+          "value": "UK"
+        }
+      },
+      {
+        "type": "button",
+        "action": "api",
+        "api": {
+          "uri": "https://ca.platform.simplifii.xyz/api/v1/custom/submit_form",
+          "method": "POST",
+          "authEnabled": false
+        },
+        "label": "Save"
+      }
+    ]
+  },
+  "msg": ""
+}
